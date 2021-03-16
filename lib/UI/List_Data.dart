@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/UI/layout.dart';
 import 'package:flutter_app/UI/shared.dart';
-import 'package:flutter_app/core/view_models/post_models.dart';
 import 'package:http/http.dart' as http;
 
 class ListData extends StatefulWidget {
@@ -13,9 +12,26 @@ class ListData extends StatefulWidget {
 }
 
 class _ListDataState extends State<ListData> {
+  var datas = [];
+  bool _isLoading = false;
+  void _getData() async {
+    var res = await http.get('https://api.mocki.io/v1/1f8a681f');
+    var body = json.decode(res.body);
+    setState(() {
+      datas=body['product'];
+      _isLoading = true;
+    });
+
+  }
 
   @override
+  initState() {
+    super.initState();
+    // baca Shared Preferences
+    _getData();
+  }
 
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return SafeArea(child: Scaffold(
@@ -26,15 +42,15 @@ class _ListDataState extends State<ListData> {
       ),
 
       body: SizedBox.expand(
-        child: Stack(
+        child: _isLoading ? Stack(
           children: <Widget>[
             GridView.count(
               crossAxisCount: 2,
               children: <Widget>[
-                ReusableContainer(cover: 'https://www.masakapahariini.com/wp-content/uploads/2018/10/burger-rendang-MAHI-6.jpg', name: 'Hamburger', price: '40000'),
-                ReusableContainer(cover: 'https://www.masakapahariini.com/wp-content/uploads/2018/10/burger-rendang-MAHI-6.jpg', name: 'Hamburger', price: '40000'),
-                ReusableContainer(cover: 'https://www.masakapahariini.com/wp-content/uploads/2018/10/burger-rendang-MAHI-6.jpg', name: 'Hamburger', price: '40000'),
-                ReusableContainer(cover: 'https://www.masakapahariini.com/wp-content/uploads/2018/10/burger-rendang-MAHI-6.jpg', name: 'Hamburger', price: '40000'),
+                ReusableContainer(cover: datas[0]['cover'], name: datas[0]['name'] , price: datas[0]['price'].toString()),
+                ReusableContainer(cover: datas[1]['cover'], name: datas[1]['name'], price: datas[1]['price'].toString()),
+                ReusableContainer(cover: datas[2]['cover'], name: datas[2]['name'], price: datas[2]['price'].toString()),
+                ReusableContainer(cover: datas[3]['cover'], name: datas[3]['name'], price: datas[3]['price'].toString()),
               ],
             ),
             Container(
@@ -91,9 +107,12 @@ class _ListDataState extends State<ListData> {
               ),
             ),
           ],
+        ) : Center(
+          child: CircularProgressIndicator(),
         ),
       ),
     ));
   }
+
 }
 

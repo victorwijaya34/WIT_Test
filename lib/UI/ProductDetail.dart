@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/UI/layout.dart';
 import 'package:flutter_app/UI/shared.dart';
 
-class ProductDetail extends StatefulWidget {
+class ProductDetail extends StatelessWidget {
+  ProductDetail({@required this.gambar, this.nama, this.harga});
 
-  @override
-  _ProductDetailState createState() => _ProductDetailState();
-}
-
-class _ProductDetailState extends State<ProductDetail> {
+  String gambar;
+  String nama;
+  String harga;
 
   @override
 
@@ -25,15 +24,19 @@ class _ProductDetailState extends State<ProductDetail> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network('https://www.masakapahariini.com/wp-content/uploads/2018/10/burger-rendang-MAHI-6.jpg'),
+            Container(
+              width: double.infinity,
+              height: SizeConfig.blockVertical * 45,
+              child: Image.network(gambar, fit: BoxFit.fill,),
+            ),
             Container(
               width: double.infinity,
               margin: EdgeInsets.all(SizeConfig.blockHorizontal * 5),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TeksDua(label: 'nama', ukuran: 5,),
-                  TeksSatu(label: '40000', ukuran: 6,),
+                  TeksDua(label: nama, ukuran: 5,),
+                  TeksSatu(label: harga, ukuran: 6,),
                 ],
               ),
             ),

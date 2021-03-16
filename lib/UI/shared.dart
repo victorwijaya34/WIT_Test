@@ -17,7 +17,7 @@ class ReusableContainer extends StatelessWidget {
     return GestureDetector(
       onTap: (){
         Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-          return ProductDetail();
+          return ProductDetail(gambar: cover, nama: name, harga: price,);
         }));
       },
       child: Container(
@@ -33,7 +33,11 @@ class ReusableContainer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget> [
-            Image.network(cover),
+            Container(
+              width: double.infinity,
+              height: SizeConfig.blockHorizontal * 45,
+              child: Image.network(cover, fit: BoxFit.fill,),
+            ),
             SizedBox(height: SizeConfig.blockVertical * 2),
             TeksDua(label: name, ukuran: 4,),
             TeksSatu(label: price, ukuran: 4),
