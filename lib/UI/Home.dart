@@ -6,13 +6,13 @@ import 'package:flutter_app/UI/layout.dart';
 import 'package:flutter_app/UI/shared.dart';
 import 'package:http/http.dart' as http;
 
-class BlaPage extends StatefulWidget {
+class Home extends StatefulWidget {
 
   @override
-  _BlaPageState createState() => _BlaPageState();
+  _HomeState createState() => _HomeState();
 }
 
-class _BlaPageState extends State<BlaPage> {
+class _HomeState extends State<Home> {
   var datas = [];
   bool _isLoading = false;
   void _getData() async {
@@ -35,7 +35,7 @@ class _BlaPageState extends State<BlaPage> {
   Widget build(BuildContext context) {
     BorderRadiusGeometry radius = BorderRadius.circular(25.0);
     List<IconData> icons = [Icons.ac_unit, Icons.account_balance, Icons.adb, Icons.add_photo_alternate, Icons.format_line_spacing, Icons.six_ft_apart, Icons.download_done_sharp,
-      Icons.filter_drama_rounded, Icons.account_circle, Icons.kitchen_sharp, Icons.nature, Icons.mail, Icons.weekend_outlined];
+    Icons.filter_drama_rounded, Icons.account_circle, Icons.kitchen_sharp, Icons.nature, Icons.mail, Icons.weekend_outlined];
 
     SizeConfig().init(context);
     return Scaffold(
@@ -52,8 +52,8 @@ class _BlaPageState extends State<BlaPage> {
             margin: EdgeInsets.symmetric(vertical: SizeConfig.blockVertical * 5, horizontal: SizeConfig.blockHorizontal * 15),
             padding: EdgeInsets.all(SizeConfig.blockVertical * 2),
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(50.0),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(50.0),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
@@ -91,8 +91,8 @@ class _BlaPageState extends State<BlaPage> {
           expandedChild: Container(
             padding: EdgeInsets.symmetric(vertical: SizeConfig.blockVertical * 3, horizontal: SizeConfig.blockHorizontal * 20),
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+                color: Colors.white,
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(25), topRight: Radius.circular(25)),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
@@ -107,24 +107,29 @@ class _BlaPageState extends State<BlaPage> {
                 SizedBox(height: SizeConfig.blockVertical * 1,),
                 Icon(Icons.keyboard_arrow_down, size: SizeConfig.blockVertical * 10, color: Colors.grey,),
                 SizedBox(height: SizeConfig.blockVertical * 5,),
-                TeksSatu(label: 'Features', ukuran: 7,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    TeksSatu(label: 'Features', ukuran: 7,),
+                  ],
+                ),
                 Expanded(
                   child: GridView.count(
-                      crossAxisCount: 4,
-                      children: <Widget> [
-                        ReusableButton(warna: Colors.red, ikon: Icons.ac_unit, label: 'Satu',),
-                        ReusableButton(warna: Colors.red, ikon: Icons.ac_unit, label: 'Satu',),
-                        ReusableButton(warna: Colors.red, ikon: Icons.ac_unit, label: 'Satu',),
-                        ReusableButton(warna: Colors.red, ikon: Icons.ac_unit, label: 'Satu',),
-                        ReusableButton(warna: Colors.green, ikon: Icons.ac_unit, label: 'Satu',),
-                        ReusableButton(warna: Colors.green, ikon: Icons.ac_unit, label: 'Satu',),
-                        ReusableButton(warna: Colors.green, ikon: Icons.ac_unit, label: 'Satu',),
-                        ReusableButton(warna: Colors.green, ikon: Icons.ac_unit, label: 'Satu',),
-                        ReusableButton(warna: Colors.blue, ikon: Icons.ac_unit, label: 'Satu',),
-                        ReusableButton(warna: Colors.black12, ikon: Icons.ac_unit, label: 'Satu',),
-                        ReusableButton(warna: Colors.grey, ikon: Icons.ac_unit, label: 'Satu',),
-                        ReusableButton(warna: Colors.yellow, ikon: Icons.ac_unit, label: 'Satu',),
-                      ],
+                    crossAxisCount: 4,
+                    children: <Widget> [
+                      ReusableButton(warna: Colors.red, ikon: Icons.ac_unit, label: 'Satu',),
+                      ReusableButton(warna: Colors.red, ikon: Icons.ac_unit, label: 'Satu',),
+                      ReusableButton(warna: Colors.red, ikon: Icons.ac_unit, label: 'Satu',),
+                      ReusableButton(warna: Colors.red, ikon: Icons.ac_unit, label: 'Satu',),
+                      ReusableButton(warna: Colors.green, ikon: Icons.ac_unit, label: 'Satu',),
+                      ReusableButton(warna: Colors.green, ikon: Icons.ac_unit, label: 'Satu',),
+                      ReusableButton(warna: Colors.green, ikon: Icons.ac_unit, label: 'Satu',),
+                      ReusableButton(warna: Colors.green, ikon: Icons.ac_unit, label: 'Satu',),
+                      ReusableButton(warna: Colors.blue, ikon: Icons.ac_unit, label: 'Satu',),
+                      ReusableButton(warna: Colors.black12, ikon: Icons.ac_unit, label: 'Satu',),
+                      ReusableButton(warna: Colors.grey, ikon: Icons.ac_unit, label: 'Satu',),
+                      ReusableButton(warna: Colors.yellow, ikon: Icons.ac_unit, label: 'Satu',),
+                    ],
                   ),
                 )
               ],

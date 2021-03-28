@@ -60,8 +60,8 @@ class ReusableButton extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(
-      width: SizeConfig.blockHorizontal * 40,
-      height: SizeConfig.blockHorizontal * 40,
+      width: SizeConfig.blockHorizontal * 35,
+      height: SizeConfig.blockHorizontal * 35,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -77,7 +77,7 @@ class ReusableButton extends StatelessWidget {
               child: Icon(ikon, color: Colors.white,),
             ),
           ),
-          SizedBox(height: SizeConfig.blockVertical * 2,),
+          SizedBox(height: SizeConfig.blockVertical * 1,),
           TeksTiga(label: label, ukuran: 3),
         ],
       ),

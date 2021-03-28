@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/UI/Home.dart';
 import 'dart:async';
 
-import 'package:flutter_app/UI/List_Data.dart';
+import 'package:flutter_app/blabla.dart';
 
 class LauncherPage extends StatefulWidget {
   @override
@@ -21,7 +22,7 @@ class _LauncherPageState extends State<LauncherPage>{
     var duration = const Duration(seconds: 1);
     return Timer(duration, () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-        return ListData();
+        return Home();
       }));
     });
   }

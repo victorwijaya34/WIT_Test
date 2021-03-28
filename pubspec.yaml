@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
 
   shared_preferences: ^0.5.6+1
+  draggable_bottom_sheet: any
+  sliding_up_panel: ^1.0.2
   http: any
   dio: any
   get_it: any
